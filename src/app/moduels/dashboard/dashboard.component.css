@@ -1,4 +1,5 @@
 .dashboardContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -21,9 +22,34 @@ header {
 aside {
   padding: 0 var(--spacing-4);
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  background-color: var(--bg);
 }
 
 main {
   border-top-left-radius: 20px;
   overflow: auto;
+}
+
+@media (max-width: 720px) {
+  aside {
+    padding-top: 12px;
+    display: none;
+    border-right: solid 1px var(--border);
+  }
+
+  main {
+    border-radius: 0;
+  }
+
+  .sideBarOpen {
+    position: fixed;
+    display: flex;
+  }
+
+  header {
+    border-bottom: solid 1px var(--border);
+  }
 }

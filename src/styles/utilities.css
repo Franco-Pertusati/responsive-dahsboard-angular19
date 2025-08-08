@@ -246,6 +246,10 @@
   margin: var(--spacing-5);
 }
 
+.m6 {
+  margin: var(--spacing-6);
+}
+
 .mx1 {
   margin-left: var(--spacing-1);
   margin-right: var(--spacing-1);

@@ -1,30 +1,28 @@
 <div class="dashboardContainer bg">
   <header>
     <div class="flex">
-      <button class="px3 py3">
-        <i class="material-icons-round">menu</i>
-      </button>
+      <app-button [icon]="'menu'" (click)="isSidebarOpen = !isSidebarOpen" />
     </div>
-    <div class="flex justCenter">
+    <div class="flex justCenter gap6">
       <input type="text" />
-      <button>
-        <i class="material-icons-round">search</i>
-      </button>
     </div>
     <div class="flex gap6 justEnd">
-      <button class="px3 py3">
-        <i class="material-icons-round">dark_mode</i>
-      </button>
-      <button class="px3 py3">
-        <i class="material-icons-round">notifications</i>
-      </button>
-      <button class="px3 py3">
-        <i class="material-icons-round">person</i>
-      </button>
+      <app-button [icon]="'dark_mode'" />
+      <app-button [icon]="'notifications'" />
+      <app-button [icon]="'person'" />
     </div>
   </header>
   <div class="sidebarMainContent">
-    <aside>Sidebar</aside>
+    <aside [ngClass]="isSidebarOpen ? 'sideBarOpen' : ''">
+      @for (btn of sidebarBtns; track $index) {
+      <app-button
+        [label]="btn.label"
+        [icon]="btn.icon"
+        [style]="'sidebar'"
+        [showLabel]="isSidebarOpen ? true : false"
+      />
+      }
+    </aside>
     <main class="bgDark wFull hFull">
       <div class="p6 flex flexCol gap3"></div>
     </main>
