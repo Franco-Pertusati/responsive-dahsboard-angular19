@@ -21,6 +21,4 @@
 
 .btn-border {
   border: solid 1px var(--border);
-  border-radius: var(--spacing-2);
 }
-

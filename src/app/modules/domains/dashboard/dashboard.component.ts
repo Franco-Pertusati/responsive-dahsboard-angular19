@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { ButtonComponent } from "../shared/ui/button/button.component";
-import { CardComponent } from "../shared/ui/card/card.component";
 import { NgClass } from '@angular/common';
+import { ButtonComponent } from '../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [ButtonComponent, NgClass, CardComponent],
+  imports: [ButtonComponent, NgClass],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

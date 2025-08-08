@@ -336,6 +336,14 @@
   height: 100%;
 }
 
+.wFit {
+  width: fit-content;
+}
+
+.hFit {
+  height: fit-content;
+}
+
 
 .mAuto {
   margin: 0 auto;
