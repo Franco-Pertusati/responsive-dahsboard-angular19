@@ -1,0 +1,4 @@
+.btnFilled {
+    background-color: var(--text);
+    color: var(--bg-dark);
+}

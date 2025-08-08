@@ -1,0 +1,29 @@
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sidebarMainContent {
+  display: flex;
+  height: calc(100% - 64px);
+}
+
+header {
+  width: 100%;
+  padding: var(--spacing-4);
+  height: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+aside {
+  padding: 0 var(--spacing-4);
+  height: 100%;
+}
+
+main {
+  border-top-left-radius: 20px;
+  overflow: auto;
+}
