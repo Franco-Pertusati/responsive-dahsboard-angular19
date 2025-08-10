@@ -1,10 +1,11 @@
 <div class="dashboardContainer bg">
   <header>
-    <div class="flex">
+    <div class="flex itemsCenter gap6">
       <app-button [icon]="'menu'" (click)="isSidebarOpen = !isSidebarOpen" />
+      <span class="boldText">AppName</span>
     </div>
     <div class="flex justCenter gap6">
-      <input type="text" />
+        <input  placeholder="Search" />
     </div>
     <div class="flex gap6 justEnd">
       <app-button [icon]="'dark_mode'" />
@@ -24,7 +25,6 @@
       }
     </aside>
     <main class="bgDark wFull hFull">
-      <div class="p6 flex flexCol gap3"></div>
     </main>
   </div>
 </div>
