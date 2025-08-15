@@ -13,8 +13,8 @@ export class DashboardComponent {
 
   sidebarBtns = [
     {
-      label: 'Dashboard',
-      icon: 'dashboard',
+      label: 'Links',
+      icon: 'link',
     },
     {
       label: 'Analytics',
@@ -25,7 +25,7 @@ export class DashboardComponent {
       icon: 'bar_chart',
     },
     {
-      label: 'Users',
+      label: 'Cutomers',
       icon: 'group',
     },
     {
@@ -33,19 +33,11 @@ export class DashboardComponent {
       icon: 'settings',
     },
     {
-      label: 'Notifications',
-      icon: 'notifications',
+      label: 'Tags',
+      icon: 'sell',
     },
     {
-      label: 'Messages',
-      icon: 'mail',
-    },
-    {
-      label: 'Tasks',
-      icon: 'check_circle',
-    },
-    {
-      label: 'Calendar',
+      label: 'Events',
       icon: 'calendar_today',
     },
     {

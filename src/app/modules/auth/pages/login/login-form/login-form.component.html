@@ -1,0 +1,20 @@
+<div class="flex flexCol gap6 p6">
+  <h1 class="titleText textCenter">Login</h1>
+  <form action="submit" class="flex flexCol gap6">
+    <div class="flex flexCol gap3">
+      <span class="smallText">Email</span>
+      <input type="text" placeholder="jhondoe@mail.com" />
+    </div>
+    <div class="flex flexCol gap3">
+      <span class="smallText">Password</span>
+      <input type="password" placeholder="*****" />
+    </div>
+    <app-button [label]="'Log In'" [style]="'wide'" />
+  </form>
+  <div class="flex gap3 itemsCenter">
+    <hr class="wFull mutedText" />
+    <span class="mutedText">or</span>
+    <hr class="wFull mutedText" />
+  </div>
+  <app-google-auth-btn />
+</div>

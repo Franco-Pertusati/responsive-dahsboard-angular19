@@ -22,3 +22,17 @@
 .btn-border {
   border: solid 1px var(--border);
 }
+
+.btn-wide {
+  width: 100%;
+  background-color: var(--text);
+  justify-content: center;
+}
+
+.btn-wide:hover {
+  background-color: var(--text-muted);
+}
+
+.btn-wide * {
+  color: var(--bg-dark);
+}
