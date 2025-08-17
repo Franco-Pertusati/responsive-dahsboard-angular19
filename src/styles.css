@@ -44,22 +44,15 @@ body * {
   font-size: 1.8rem;
 }
 
-button,
-a {
+button, a {
   background-color: transparent;
   border-style: none;
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
-  padding: var(--spacing-3) var(--spacing-6);
-  border-radius: 99px;
   cursor: pointer;
   text-decoration: none;
-}
-
-button:hover,
-a:hover {
-  background-color: var(--bg-light);
+  border-radius: var(--spacing-6);
 }
 
 li {
@@ -84,6 +77,10 @@ input {
 
 input:focus {
   outline: none;
+}
+
+label {
+  font-size: 1.4rem;
 }
 
 html, body { height: 100%; }

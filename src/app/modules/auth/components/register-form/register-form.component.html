@@ -1,0 +1,25 @@
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flexCol gap6"
+>
+  <div class="flex flexCol gap3">
+    <label for="name">Name</label>
+    <input id="name" type="text" class="wFull card" formControlName="name" />
+  </div>
+  <div class="flex flexCol gap3">
+    <label for="name">Email</label>
+    <input id="name" type="text" class="wFull card" formControlName="name" />
+  </div>
+  <div class="flex flexCol gap3">
+    <label for="password">Password</label>
+    <input id="password" type="text" class="wFull card" />
+  </div>
+  <div class="flex flexCol gap3">
+    <label for="password">Confirm password</label>
+    <input id="password" type="text" class="wFull card" />
+  </div>
+  <button class="btn btn-form" type="submit">
+    <span>Register</span>
+  </button>
+</form>

@@ -1,3 +1,8 @@
+.btn {
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: 99px;
+}
+
 .btn-filled {
   background-color: var(--text);
 }
@@ -23,16 +28,23 @@
   border: solid 1px var(--border);
 }
 
-.btn-wide {
+.btn-form {
   width: 100%;
   background-color: var(--text);
   justify-content: center;
+  padding: 14px 0;
+  border-radius: var(--spacing-6);
 }
 
-.btn-wide:hover {
+.btn-form:hover {
   background-color: var(--text-muted);
 }
 
-.btn-wide * {
+.btn-form * {
   color: var(--bg-dark);
+}
+
+.btn-link:hover * {
+  color: var(--text);
+  text-decoration: underline;
 }
