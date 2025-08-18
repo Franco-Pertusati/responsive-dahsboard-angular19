@@ -1,15 +1,15 @@
 <form
   [formGroup]="loginForm"
   (ngSubmit)="onSubmit()"
-  class="flex flexCol gap6 p3"
+  class="flex flexCol gap6"
 >
   <div class="flex flexCol gap3">
-    <label for="name">Name</label>
-    <input id="name" type="text" class="card" />
+    <label for="email">Email</label>
+    <input id="email" type="text" placeholder="jhondoe@mail.com" class="wFull card" />
   </div>
   <div class="flex flexCol gap3">
     <label for="password">Password</label>
-    <input id="password" type="text" class="card" />
+    <input id="password" type="password" class="wFull card" />
   </div>
   <button class="btn btn-form" type="submit">
     <span>Login</span>

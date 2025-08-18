@@ -43,6 +43,11 @@
   font-size: 1.4rem;
 }
 
+.errorText {
+  color: var(--red);
+  font-weight: bold;
+}
+
 .boldText {
   font-weight: 700;
 }
