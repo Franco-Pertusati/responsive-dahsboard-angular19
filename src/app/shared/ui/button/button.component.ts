@@ -10,6 +10,7 @@ import { Component, input } from '@angular/core';
 export class ButtonComponent {
   style = input<'text' | 'filled' | 'border' | 'sidebar' | 'wide' >('text');
   vertList = input<boolean>(false);
+  extraCss = input<string>()
 
   label = input<string>('');
   icon = input<string>('');

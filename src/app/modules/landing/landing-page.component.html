@@ -1,5 +1,23 @@
 <div class="layout bgDark hFull">
   <div class="gridContainer">
-
+    <div class="card" id="urlInputContainer">
+      <app-url-input />
+      <app-landing-url-list />
+    </div>
+    <div class="card" id="headerContainer">
+      <app-landing-header />
+    </div>
+    <div class="card flex flexCol gap3 itemsCenter justCenter">
+      <app-button [icon]="'light_mode'" [extraCss]="'titleCase'" />
+      <span class="mutedText smallText"> Theme </span>
+    </div>
+    <div class="card flex flexCol gap3 itemsCenter justCenter">
+      <app-button [icon]="'open_in_new'" [extraCss]="'titleCase'" />
+      <span class="mutedText smallText"> GitHub </span>
+    </div>
+    <div class="card flex flexCol gap3 itemsCenter justCenter">
+      <app-button [icon]="'person'" [extraCss]="'titleCase'" />
+      <span class="mutedText smallText"> Account </span>
+    </div>
   </div>
 </div>

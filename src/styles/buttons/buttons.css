@@ -1,6 +1,5 @@
 .btn {
   padding: var(--spacing-3) var(--spacing-6);
-  border-radius: 99px;
 }
 
 .btn-filled {
