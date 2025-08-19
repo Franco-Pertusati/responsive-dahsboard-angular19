@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -9,17 +11,34 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 })
 export class LoginFormComponent {
   fb = inject(FormBuilder)
+  authService = inject(AuthService)
+  router = inject(Router)
 
   loginForm = this.fb.group({
-    name: ['', [Validators.required]],
-    password: ['', [Validators.required]],
-  }, {
-    Validators: [
-
-    ]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [
+      Validators.required,
+      Validators.minLength(8),
+    ]],
   })
 
   onSubmit() {
-    console.log(this.loginForm)
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.getRawValue()
+      this.login(email!, password!)
+    } else {
+      console.log('Formulario inválido')
+      this.loginForm.markAllAsTouched()
+    }
+  }
+
+  async login(email: string, password: string) {
+    try {
+      const response = await this.authService.login(email, password);
+      this.router.navigate(['/dashboard'])
+    } catch (error: any) {
+      console.error('Error al loguear:', error);
+      alert(error.message || 'Ocurrió un error en el Login');
+    }
   }
 }

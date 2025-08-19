@@ -41,15 +41,14 @@ export class RegisterFormComponent {
     }
   }
 
-  register(name: string, email: string, password: string) {
-    this.authService.register(name, email, password)
-      .then(response => {
-        console.log('Usuario registrado:', response);
-        alert('¡Registro exitoso!');
-      })
-      .catch(error => {
-        console.error('Error al registrar:', error);
-        alert(error.message || 'Ocurrió un error en el registro');
-      });
+  async register(name: string, email: string, password: string) {
+    try {
+      const response = await this.authService.register(name, email, password);
+      console.log('Usuario registrado:', response);
+      alert('¡Registro exitoso!');
+    } catch (error: any) {
+      console.error('Error al registrar:', error);
+      alert(error.message || 'Ocurrió un error en el registro');
+    }
   }
 }

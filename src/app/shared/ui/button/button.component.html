@@ -1,4 +1,4 @@
-<button [class]="`btn-${style()}`" [ngClass]="!showLabel() || !label()? 'px3' : ''">
+<button [class]="`btn-${style()} btn`" [ngClass]="!showLabel() || !label()? 'px3' : ''">
   @if (showIcon() && icon()) {
     <i class="material-icons-round">{{ icon() }}</i>
   }

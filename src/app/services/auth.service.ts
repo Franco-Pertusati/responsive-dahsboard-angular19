@@ -28,4 +28,26 @@ export class AuthService {
       throw error;
     }
   }
+
+    async login(email: string, password: string): Promise<any> {
+    try {
+      const response = await fetch(`${this.apiUrl}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Error al Loguear');
+      }
+
+      return await response.json();
+    } catch (error: any) {
+      console.error('Error en Login:', error);
+      throw error;
+    }
+  }
 }

@@ -13,7 +13,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'auth',
-    pathMatch: 'full'
-  }
+    loadChildren: () => import('./modules/landing/auth.routes')
+      .then(m => m.LANDING_PAGE_ROUTES)
+  },
 ];
