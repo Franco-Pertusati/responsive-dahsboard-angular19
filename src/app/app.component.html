@@ -1,1 +1,6 @@
 <router-outlet />
+@if (dialog.isDialogOpen()) {
+<app-dialog>
+  <ng-container *ngComponentOutlet="dialog.componentToShow()"></ng-container>
+</app-dialog>
+}

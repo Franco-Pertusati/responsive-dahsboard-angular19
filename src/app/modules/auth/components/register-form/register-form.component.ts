@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core'
 import { FormBuilder, Validators, AbstractControl, ValidationErrors, ValidatorFn, ReactiveFormsModule } from '@angular/forms'
-import { AuthService } from '../../../../services/auth.service'
-import { Router } from 'express'
+import { AuthService } from '../../../../core/services/auth.service'
 
 // 🔹 Validador personalizado: confirmación de password
 export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {

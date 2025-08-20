@@ -1,7 +1,3 @@
-.btn {
-  padding: var(--spacing-3) var(--spacing-6);
-}
-
 .btn-filled {
   background-color: var(--text);
 }
