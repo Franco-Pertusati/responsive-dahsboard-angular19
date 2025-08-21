@@ -2,7 +2,15 @@
   <div class="gridContainer">
     <div class="card" id="urlInputContainer">
       <app-url-input />
-      <app-landing-url-list />
+      <div id="urlListContainer">
+        <app-landing-url-list />
+      </div>
+      <div class="bgDark rounded6 p6">
+        <span>
+          Want to save your links, edit them, or view their analytics? Create a
+          free account here.
+        </span>
+      </div>
     </div>
     <div class="card" id="headerContainer">
       <app-landing-header />
@@ -16,7 +24,11 @@
       <span class="mutedText smallText"> GitHub </span>
     </div>
     <div class="card flex flexCol gap3 itemsCenter justCenter">
-      <app-button [icon]="'person'" [extraCss]="'titleCase'" (click)="openRegisterDialog()" />
+      <app-button
+        [icon]="'person'"
+        [extraCss]="'titleCase'"
+        (click)="openRegisterDialog()"
+      />
       <span class="mutedText smallText"> Account </span>
     </div>
   </div>

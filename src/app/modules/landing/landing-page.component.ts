@@ -5,6 +5,7 @@ import { LandingHeaderComponent } from "./components/landing-header/landing-head
 import { LandingUrlListComponent } from "./components/landing-url-list/landing-url-list.component";
 import { DialogService } from '../../core/services/dialog.service';
 import { RegisterComponent } from '../auth/pages/register/register.component';
+import { LoginComponent } from '../auth/pages/login/login.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -17,5 +18,9 @@ export class LandingPageComponent {
 
   openRegisterDialog() {
     this.dialogService.openDialog(RegisterComponent)
+  }
+
+  openLoginDialog() {
+    this.dialogService.openDialog(LoginComponent)
   }
 }

@@ -27,7 +27,11 @@
 }
 
 #urlInputContainer {
-  padding: 0;
   grid-column: 3 span;
   grid-row: 4 span;
+}
+
+#urlListContainer {
+  overflow-y: auto;
+  height: 344px;
 }
