@@ -1,10 +1,61 @@
-import { Component } from '@angular/core';
-import { ButtonComponent } from "../../../../shared/ui/button/button.component";
+import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { FormsModule, NgModel } from '@angular/forms';
+import { ToastService } from '../../../../core/services/toast.service';
 
 @Component({
   selector: 'app-url-input',
-  imports: [ButtonComponent],
   templateUrl: './url-input.component.html',
-  styleUrl: './url-input.component.css'
+  styleUrl: './url-input.component.css',
+  imports: [FormsModule]
 })
-export class UrlInputComponent {}
+export class UrlInputComponent {
+  longUrl: string = ''
+  toast = inject(ToastService)
+
+  shortenUrl() {
+    const url = this.longUrl
+    if (this.validateUrl(url)) {
+      const newToast = {
+        title: 'URL Valida',
+        icon: 'check'
+      }
+      this.toast.createToast(newToast)
+    } else {
+      const newToast = {
+        title: 'URL Invalida',
+        icon: 'close'
+      }
+      this.toast.createToast(newToast)
+    }
+  }
+
+  validateUrl(input: string): string | null {
+    const sanitized = input.trim();
+
+    if (!sanitized) return null;
+
+    const htmlPattern = /<[^>]*>/g;
+    if (htmlPattern.test(sanitized)) return null;
+
+    const sqlPattern = /('|--|;|\/\*|\*\/|xp_)/i;
+    if (sqlPattern.test(sanitized)) return null;
+
+    try {
+      const url = new URL(sanitized);
+
+      // Debe usar HTTPS
+      if (url.protocol !== 'https:') return null;
+
+      const domainParts = url.hostname.split('.');
+      if (domainParts.length < 2) return null;
+
+      const tld = domainParts[domainParts.length - 1];
+      if (!/^[a-z]{2,}$/i.test(tld)) return null;
+
+      return url.toString();
+    } catch (err) {
+      return null;
+    }
+  }
+}

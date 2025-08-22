@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core'
 import { FormBuilder, Validators, AbstractControl, ValidationErrors, ValidatorFn, ReactiveFormsModule } from '@angular/forms'
 import { AuthService } from '../../../../core/services/auth.service'
 
-// 🔹 Validador personalizado: confirmación de password
 export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const password = control.get('password')?.value
   const confirmPassword = control.get('confirmPassword')?.value
@@ -24,7 +23,7 @@ export class RegisterFormComponent {
     password: ['', [
       Validators.required,
       Validators.minLength(8),
-      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/) // al menos una mayúscula, una minúscula y un número
+      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/)
     ]],
     confirmPassword: ['', [Validators.required]],
   }, { validators: passwordMatchValidator })
