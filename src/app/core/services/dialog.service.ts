@@ -4,13 +4,10 @@ import { Injectable, signal, Type } from '@angular/core';
   providedIn: 'root'
 })
 export class DialogService {
-  // Señal que controla si el diálogo está abierto o no
   isDialogOpen = signal<boolean>(false);
 
-  // Señal que guarda el componente que se quiere mostrar en el diálogo
   componentToShow = signal<Type<any> | null>(null);
 
-  // Opcional: datos que quieres pasar al componente
   dialogData = signal<any>(null);
 
   openDialog<T>(component: Type<T>, data?: any) {

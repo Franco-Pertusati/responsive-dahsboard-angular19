@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { ToastService } from '../../../../core/services/toast.service';
+import { LinkService } from '../../../../core/services/link.service';
 
 @Component({
   selector: 'app-url-input',
@@ -12,21 +13,16 @@ import { ToastService } from '../../../../core/services/toast.service';
 export class UrlInputComponent {
   longUrl: string = ''
   toast = inject(ToastService)
+  linkService = inject(LinkService)
 
   shortenUrl() {
-    const url = this.longUrl
-    if (this.validateUrl(url)) {
-      const newToast = {
-        title: 'URL Valida',
-        icon: 'check'
-      }
-      this.toast.createToast(newToast)
+    const url = this.validateUrl(this.longUrl)
+    const expiresAt = new Date(Date.now() + 30 * 60 * 1000)
+
+    if (url) {
+      this.linkService.shorten(url, expiresAt)
     } else {
-      const newToast = {
-        title: 'URL Invalida',
-        icon: 'close'
-      }
-      this.toast.createToast(newToast)
+      this.toast.errorToast('Invalid URL')
     }
   }
 

@@ -34,4 +34,6 @@
 #urlListContainer {
   overflow-y: auto;
   height: 344px;
+  mask-image: linear-gradient(180deg,rgba(0, 0, 0, 1) 85%, rgba(202, 240, 76, 0) 100%);
+
 }

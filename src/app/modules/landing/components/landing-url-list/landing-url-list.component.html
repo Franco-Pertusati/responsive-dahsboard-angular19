@@ -1,4 +1,5 @@
-<div class="wFull hFull flex flexCol gap2">
-  <app-link-item />
-  <app-link-item />
+<div class="urlList wFull hFull flex flexCol gap2">
+  @for (link of linkService.urlList(); track $index) {
+    <app-link-item [link]="link" />
+  }
 </div>
