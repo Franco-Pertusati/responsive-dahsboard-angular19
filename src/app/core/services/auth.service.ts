@@ -14,7 +14,8 @@ export class AuthService {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, email, password })
+        body: JSON.stringify({ username, email, password }),
+        credentials: "include" // 🔑 necesario para que guarde/envié cookies
       });
 
       if (!response.ok) {

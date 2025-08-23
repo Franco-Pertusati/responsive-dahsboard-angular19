@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core'
 import { FormBuilder, Validators, AbstractControl, ValidationErrors, ValidatorFn, ReactiveFormsModule } from '@angular/forms'
 import { AuthService } from '../../../../core/services/auth.service'
+import { ToastService } from '../../../../core/services/toast.service'
 
 export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const password = control.get('password')?.value
@@ -16,6 +17,7 @@ export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): V
 export class RegisterFormComponent {
   fb = inject(FormBuilder)
   authService = inject(AuthService)
+  toast = inject(ToastService)
 
   registerForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
@@ -34,7 +36,6 @@ export class RegisterFormComponent {
       const { name, email, password } = this.registerForm.getRawValue()
       this.register(name!, email!, password!)
     } else {
-      console.log('Formulario inválido')
       this.registerForm.markAllAsTouched()
     }
   }
@@ -42,11 +43,9 @@ export class RegisterFormComponent {
   async register(name: string, email: string, password: string) {
     try {
       const response = await this.authService.register(name, email, password);
-      console.log('Usuario registrado:', response);
-      alert('¡Registro exitoso!');
+      this.toast.success(`Welcome ${name}`)
     } catch (error: any) {
-      console.error('Error al registrar:', error);
-      alert(error.message || 'Ocurrió un error en el registro');
+      this.toast.errorToast('Register failed')
     }
   }
 }

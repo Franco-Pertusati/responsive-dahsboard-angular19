@@ -1,8 +1,10 @@
 <div class="flex flexCol gap3 urlInputContainer">
-  <h2 class="titleText">Short a long url</h2>
-  <span class="mutedText smallText my3 mAuto">
-    To prevent abuse, links will be removed after 30 minutes.
-  </span>
+  <div>
+    <h2 class="titleText">Short a long url</h2>
+    <span class="mutedText smallText my3 mAuto">
+      To prevent abuse, links will be removed after 30 minutes.
+    </span>
+  </div>
   <div class="inputContainer bgDark p3 rounded6 wFull flex gap3 itemsCenter">
     <i class="material-icons-round p3">link</i>
     <input
@@ -13,7 +15,7 @@
       [(ngModel)]="longUrl"
       (keydown.enter)="shortenUrl()"
     />
-    <button type="submit" class="p3 rounded3 btn-filled" (click)="(shortenUrl())">
+    <button type="submit" class="p3 rounded3 btn-filled" (click)="shortenUrl()">
       <i class="material-icons-round">subdirectory_arrow_right</i>
     </button>
   </div>
