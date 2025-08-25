@@ -3,6 +3,7 @@ import { enviroment } from '../../../enviroments/enviroment';
 import { ToastService } from './toast.service';
 import { Toast } from '../interfaces/toast';
 import { ShortenLink } from '../interfaces/link';
+import { StateMachine } from '../interfaces/state-machine';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,6 @@ export class LinkService {
 
       this.toastService.success('Link shorted with success')
       const newLinkData = await response.json();
-      console.log('-----------------------------------------')
-      console.log(newLinkData)
       const newLink = {
         id: newLinkData.id,
         originalUrl: newLinkData.originalUrl,

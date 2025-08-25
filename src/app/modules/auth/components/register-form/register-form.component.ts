@@ -44,6 +44,7 @@ export class RegisterFormComponent {
     try {
       const response = await this.authService.register(name, email, password);
       this.toast.success(`Welcome ${name}`)
+      console.log(response)
     } catch (error: any) {
       this.toast.errorToast('Register failed')
     }

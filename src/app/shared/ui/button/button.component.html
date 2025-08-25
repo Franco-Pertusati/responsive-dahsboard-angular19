@@ -1,8 +1,14 @@
-<button [class]="`btn-${style()} ${extraCss()}`" [ngClass]="!showLabel() || !label()? 'p3' : 'px6 py3'">
-  @if (showIcon() && icon()) {
-    <i class="material-icons-round">{{ icon() }}</i>
-  }
-  @if (showLabel() && label()) {
-    <span>{{ label() }}</span>
+@let btn = { style : style(), extraCss: extraCss(), label : label(), icon :
+icon(), notifications : notifications(), showLabel : showLabel(), showIcon :
+showIcon()};
+
+<button
+  [class]="`btn-${btn.style} btn ${btn.extraCss}`"
+  [ngClass]="!btn.showLabel || !btn.label ? 'p3' : 'px6 py3'"
+>
+  @if (btn.showIcon && btn.icon) {
+  <i class="material-symbols-outline">{{ btn.icon }}</i>
+  } @if (btn.showLabel && btn.label) {
+  <span>{{ btn.label }}</span>
   }
 </button>

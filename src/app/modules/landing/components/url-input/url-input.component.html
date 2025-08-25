@@ -15,8 +15,11 @@
       [(ngModel)]="longUrl"
       (keydown.enter)="shortenUrl()"
     />
-    <button type="submit" class="p3 rounded3 btn-filled" (click)="shortenUrl()">
-      <i class="material-icons-round">subdirectory_arrow_right</i>
-    </button>
+    <app-button-promise
+      [style]="'filled'"
+      [state]="shortenState"
+      [icon]="'keyboard_return'"
+      (click)="shortenUrl()"
+    />
   </div>
 </div>

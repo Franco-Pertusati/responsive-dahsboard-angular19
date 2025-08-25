@@ -1,19 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { ToastService } from '../../../../core/services/toast.service';
 import { LinkService } from '../../../../core/services/link.service';
+import { ButtonPromiseComponent } from "../../../../shared/ui/button-promise/button-promise.component";
 
 @Component({
   selector: 'app-url-input',
   templateUrl: './url-input.component.html',
   styleUrl: './url-input.component.css',
-  imports: [FormsModule]
+  imports: [FormsModule, ButtonPromiseComponent]
 })
 export class UrlInputComponent {
   longUrl: string = ''
   toast = inject(ToastService)
   linkService = inject(LinkService)
+  shortenState: 'default' | 'loading' | 'error' | 'success' = 'loading'
 
   shortenUrl() {
     const url = this.validateUrl(this.longUrl)
@@ -23,7 +25,9 @@ export class UrlInputComponent {
       this.linkService.shorten(url, expiresAt)
     } else {
       this.toast.errorToast('Invalid URL')
+      return
     }
+    this.longUrl = ''
   }
 
   validateUrl(input: string): string | null {

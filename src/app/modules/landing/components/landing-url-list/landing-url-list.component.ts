@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { LinkItemComponent } from "./link-item/link-item.component";
 import { LinkService } from '../../../../core/services/link.service';
 
