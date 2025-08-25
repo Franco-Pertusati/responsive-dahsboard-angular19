@@ -4,6 +4,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { ToastService } from '../../../../core/services/toast.service';
 import { LinkService } from '../../../../core/services/link.service';
 import { ButtonPromiseComponent } from "../../../../shared/ui/button-promise/button-promise.component";
+import { OperationStatus } from '../../../../core/typs/operationStatus';
 
 @Component({
   selector: 'app-url-input',
@@ -15,19 +16,30 @@ export class UrlInputComponent {
   longUrl: string = ''
   toast = inject(ToastService)
   linkService = inject(LinkService)
-  shortenState: 'default' | 'loading' | 'error' | 'success' = 'loading'
+  shortenState: OperationStatus = 'default'
 
-  shortenUrl() {
+  async shortenUrl() {
     const url = this.validateUrl(this.longUrl)
     const expiresAt = new Date(Date.now() + 30 * 60 * 1000)
 
-    if (url) {
-      this.linkService.shorten(url, expiresAt)
-    } else {
-      this.toast.errorToast('Invalid URL')
-      return
+    if (!url) {
+      this.toast.error('Invalid URL');
+      return;
     }
-    this.longUrl = ''
+
+    this.shortenState = 'loading';
+
+    try {
+      await this.delay(3000);
+      const result = await this.linkService.shorten(url, expiresAt);
+      this.shortenState = 'default';
+      this.toast.success('URL shortened successfully');
+      this.longUrl = '';
+    } catch (error) {
+      this.shortenState = 'error';
+      this.toast.error('Failed to shorten URL');
+      console.error(error);
+    }
   }
 
   validateUrl(input: string): string | null {
@@ -44,7 +56,6 @@ export class UrlInputComponent {
     try {
       const url = new URL(sanitized);
 
-      // Debe usar HTTPS
       if (url.protocol !== 'https:') return null;
 
       const domainParts = url.hostname.split('.');
@@ -57,5 +68,9 @@ export class UrlInputComponent {
     } catch (err) {
       return null;
     }
+  }
+
+  private delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }

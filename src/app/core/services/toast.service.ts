@@ -19,7 +19,7 @@ export class ToastService {
     this.toastList.set(currentToasts.slice(1));
   }
 
-  errorToast(title: string, message?: string) {
+  error(title: string, message?: string) {
     const newToast: Toast = {
       title: title,
       message: message || undefined,

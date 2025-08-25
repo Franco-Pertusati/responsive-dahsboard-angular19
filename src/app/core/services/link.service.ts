@@ -3,16 +3,12 @@ import { enviroment } from '../../../enviroments/enviroment';
 import { ToastService } from './toast.service';
 import { Toast } from '../interfaces/toast';
 import { ShortenLink } from '../interfaces/link';
-import { StateMachine } from '../interfaces/state-machine';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LinkService {
   private apiUrl = `${enviroment.API_URL}/links`;
-
-  toastService = inject(ToastService)
-
   urlList = signal<ShortenLink[]>([])
 
   async shorten(originalUrl: string, expiresAt: Date): Promise<any> {
@@ -28,11 +24,9 @@ export class LinkService {
 
       if (!response.ok) {
         const error = await response.json();
-        this.toastService.errorToast('Error shortening link.')
         throw new Error(error.message || 'Error shortening link');
       }
 
-      this.toastService.success('Link shorted with success')
       const newLinkData = await response.json();
       const newLink = {
         id: newLinkData.id,
@@ -43,9 +37,7 @@ export class LinkService {
         favIcon: '',
       }
       this.urlList.update(list => [...list, newLink]);
-      return newLink;
     } catch (error) {
-      this.toastService.errorToast('Error shortening link.')
       throw error;
     }
   }

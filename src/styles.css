@@ -1,6 +1,7 @@
 @import url(styles/utilities.css);
 @import url(styles/normalize.css);
 @import url(styles/buttons/buttons.css);
+@import url(styles/animations.css);
 
 :root {
   --bg-dark: hsl(0, 0%, 5%);
@@ -55,7 +56,7 @@ button, a {
   gap: var(--spacing-3);
   cursor: pointer;
   text-decoration: none;
-  border-radius: var(--spacing-6);
+  border-radius: var(--spacing-3);
 }
 
 button:hover {

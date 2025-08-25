@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { StateMachine } from '../../../core/interfaces/state-machine';
 import { NgClass } from '@angular/common';
+import { OperationStatus } from '../../../core/typs/operationStatus';
 
 @Component({
   selector: 'app-button-promise',
@@ -20,5 +20,5 @@ export class ButtonPromiseComponent {
   showLabel = input<boolean>(true);
   showIcon = input<boolean>(true);
 
-  state = input.required<'default' | 'loading' | 'error' | 'success'>()
+  state = input.required<OperationStatus>()
 }

@@ -7,7 +7,7 @@ showIcon(), state : state()};
   [ngClass]="!btn.showLabel || !btn.label ? 'p3' : 'px6 px3'"
 >
   @if (btn.showIcon && btn.icon) {
-  <i class="material-symbols-outline">
+  <i class="material-symbols-rounded" [ngClass]="btn.state === 'loading'? 'spinInfinite' : ''">
     {{
       btn.state === "default"
         ? btn.icon

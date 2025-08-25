@@ -46,7 +46,7 @@ export class RegisterFormComponent {
       this.toast.success(`Welcome ${name}`)
       console.log(response)
     } catch (error: any) {
-      this.toast.errorToast('Register failed')
+      this.toast.error('Register failed')
     }
   }
 }
