@@ -9,7 +9,6 @@
 }
 
 .dialogCard {
-  padding: 72px;
   border-radius: 24px;
   background-color: var(--bg-dark);
   border: solid 1px var(--border);

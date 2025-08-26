@@ -30,7 +30,7 @@ export class UrlInputComponent {
     this.shortenState = 'loading';
 
     try {
-      await this.delay(3000);
+      await this.delay(800);
       const result = await this.linkService.shorten(url, expiresAt);
       this.shortenState = 'default';
       this.toast.success('URL shortened successfully');
