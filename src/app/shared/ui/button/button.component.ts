@@ -8,7 +8,7 @@ import { Component, input } from '@angular/core';
 })
 
 export class ButtonComponent {
-  style = input<'text' | 'filled' | 'border' | 'sidebar' | 'wide' >('text');
+  style = input<'text' | 'filled' | 'border' | 'sidebar' | 'wide' | 'cta' >('text');
   vertList = input<boolean>(false);
   extraCss = input<string>()
 

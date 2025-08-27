@@ -23,7 +23,7 @@ export class ToastService {
     const newToast: Toast = {
       title: title,
       message: message || undefined,
-      icon: 'close'
+      icon: 'error'
     }
     this.createToast(newToast)
   }
@@ -32,7 +32,7 @@ export class ToastService {
     const newToast: Toast = {
       title: title,
       message: message || undefined,
-      icon: 'check'
+      icon: 'check_circle'
     }
     this.createToast(newToast)
   }

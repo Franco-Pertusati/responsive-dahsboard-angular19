@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core'
 import { FormBuilder, Validators, AbstractControl, ValidationErrors, ValidatorFn, ReactiveFormsModule } from '@angular/forms'
 import { AuthService } from '../../../../core/services/auth.service'
-import { ToastService } from '../../../../core/services/toast.service'
+import { Router } from '@angular/router'
+import { DialogService } from '../../../../core/services/dialog.service'
 
 export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const password = control.get('password')?.value
@@ -17,10 +18,11 @@ export const passwordMatchValidator: ValidatorFn = (control: AbstractControl): V
 export class RegisterFormComponent {
   fb = inject(FormBuilder)
   authService = inject(AuthService)
-  toast = inject(ToastService)
+  router = inject(Router)
+  dialog = inject(DialogService)
 
   registerForm = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
+    username: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [
       Validators.required,
@@ -33,20 +35,21 @@ export class RegisterFormComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      const { name, email, password } = this.registerForm.getRawValue()
-      this.register(name!, email!, password!)
+      const { username, email, password } = this.registerForm.getRawValue()
+      this.register(username!, email!, password!)
     } else {
       this.registerForm.markAllAsTouched()
     }
   }
 
-  async register(name: string, email: string, password: string) {
+  async register(username: string, email: string, password: string) {
     try {
-      const response = await this.authService.register(name, email, password);
-      this.toast.success(`Welcome ${name}`)
+      const response = await this.authService.register(username, email, password);
+      this.router.navigate(['/dashboard'])
+      this.dialog.closeDialog()
       console.log(response)
     } catch (error: any) {
-      this.toast.error('Register failed')
+      console.log(error)
     }
   }
 }

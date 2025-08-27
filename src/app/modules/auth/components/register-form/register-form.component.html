@@ -3,27 +3,27 @@
   (ngSubmit)="onSubmit()"
   class="flex flexCol gap6"
 >
-  <!-- NAME -->
+  <!-- USERNAME -->
   <div class="flex flexCol gap3">
     <div class="flex gap3 items-center">
-      <label for="name">Name</label>
-      @if (registerForm.get('name')?.touched && registerForm.get('name')?.invalid) {
+      <label for="username">Name</label>
+      @if (registerForm.get('username')?.touched && registerForm.get('username')?.invalid) {
         <span class="errorText smallText">
-          @if (registerForm.get('name')?.errors?.['required']) {
+          @if (registerForm.get('username')?.errors?.['required']) {
             Name is required
           }
-          @if (registerForm.get('name')?.errors?.['minlength']) {
-            Must be at least {{ registerForm.get('name')?.errors?.['minlength'].requiredLength }} characters
+          @if (registerForm.get('username')?.errors?.['minlength']) {
+            Must be at least {{ registerForm.get('username')?.errors?.['minlength'].requiredLength }} characters
           }
         </span>
       }
     </div>
     <input
       placeholder="Jhon"
-      id="name"
+      id="username"
       type="text"
       class="wFull card"
-      formControlName="name"
+      formControlName="username"
     />
   </div>
 

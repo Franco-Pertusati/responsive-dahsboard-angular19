@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { enviroment } from '../../../enviroments/enviroment';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  toast = inject(ToastService)
   private apiUrl = `${enviroment.API_URL}/auth`;
 
   async register(username: string, email: string, password: string): Promise<any> {
     try {
       const response = await fetch(`${this.apiUrl}/register`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, email, password }),
-        credentials: "include" // 🔑 necesario para que guarde/envié cookies
+        headers: { 'Content-Type': 'application/json' },
+        credentials: "include",
+        body: JSON.stringify({ username, email, password })
       });
 
       if (!response.ok) {
@@ -30,13 +30,12 @@ export class AuthService {
     }
   }
 
-    async login(email: string, password: string): Promise<any> {
+  async login(email: string, password: string): Promise<any> {
     try {
       const response = await fetch(`${this.apiUrl}/login`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ email, password })
       });
 
@@ -45,10 +44,19 @@ export class AuthService {
         throw new Error(error.message || 'Error al Loguear');
       }
 
+      this.showSuccesToast(true)
       return await response.json();
     } catch (error: any) {
-      console.error('Error en Login:', error);
+      this.showErrorToast('login', error)
       throw error;
     }
+  }
+
+  private showErrorToast(procces: 'login' | 'register', error: Error) {
+    this.toast.error(`Erorr during ${procces}`, error.message)
+  }
+
+  private showSuccesToast(firstTime: boolean) {
+    this.toast.success(`Welcome ${firstTime ? 'back.' : '.'}`)
   }
 }

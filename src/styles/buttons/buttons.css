@@ -39,6 +39,16 @@
   color: var(--bg-dark);
 }
 
+.btn-cta {
+  background-color: var(--text);
+  padding: var(--spacing-6) 24px;
+}
+
+.btn-cta span {
+  color: var(--bg);
+  font-weight: bold;
+}
+
 .btn-link:hover * {
   color: var(--text);
   text-decoration: underline;

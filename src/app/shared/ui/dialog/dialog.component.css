@@ -17,6 +17,10 @@
   right: 12px;
 }
 
+.dialogCard {
+  padding: 24px;
+}
+
 @keyframes fadeIn {
   from {
     background-color: hsla(0, 0%, 17%, 0);
