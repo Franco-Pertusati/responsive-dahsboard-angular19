@@ -1,7 +1,5 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { enviroment } from '../../../enviroments/enviroment';
-import { ToastService } from './toast.service';
-import { Toast } from '../interfaces/toast';
 import { ShortenLink } from '../interfaces/link';
 
 @Injectable({
@@ -28,10 +26,11 @@ export class LinkService {
       }
 
       const newLinkData = await response.json();
-      const newLink = {
+      const newLink: ShortenLink = {
         id: newLinkData.id,
         originalUrl: newLinkData.originalUrl,
-        shortUrl: newLinkData.shortCode,
+        shortCode: newLinkData.shortCode,
+        shortLink: `${enviroment.LINKTUN_URL}/${newLinkData.shortCode}`,
         createdAt: newLinkData.createdAt,
         expiresAt: expiresAt,
         favIcon: '',

@@ -84,7 +84,7 @@ input {
 }
 
 input:focus {
-  outline: none;
+  outline: 2px solid var(--primary);
 }
 
 label {
@@ -92,4 +92,15 @@ label {
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.demoBorderRadius {
+  border: dashed;
+  border-width: 2px 4px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.qrcodeImage {
+  display: flex;
+  flex: 1;
+}

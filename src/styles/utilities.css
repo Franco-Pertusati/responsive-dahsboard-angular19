@@ -395,3 +395,7 @@
   padding: var(--spacing-6);
   background-color: var(--bg-dark);
 }
+
+.focusNone:focus {
+  outline: none;
+}
