@@ -9,13 +9,11 @@
   </div>
   <div class="linksContainer wFull">
     <div class="flex gap3 itemsCenter">
-      <a class="boldText" [href]="`${linkTunUrl}${l.shortCode}`">
-        {{ `lkt.co/${l.shortCode}` }}
+      <a class="boldText shortLink" [href]="`${linkTunUrl}${l.shortCode}`">
+        {{ reomoveLinkScheme(l.shortLink) }}
       </a>
-      <button>
-        <i class="material-symbols-rounded mutedText">content_copy</i>
-      </button>
-      <button>
+      <app-button-copy [texToCopy]="l.shortLink" [extraCss]="'p0'" />
+      <button (click)="openQrDialog()">
         <i class="material-symbols-rounded mutedText">qr_code</i>
       </button>
     </div>

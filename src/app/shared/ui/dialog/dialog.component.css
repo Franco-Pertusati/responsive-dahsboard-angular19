@@ -18,6 +18,7 @@
 }
 
 .dialogCard {
+  width: 100%;
   padding: 24px;
 }
 
@@ -27,5 +28,12 @@
   }
   to {
     background-color: hsla(0, 0%, 17%, .3);
+  }
+}
+
+@media(min-width: 768px) {
+  .dialogCard {
+    width: fit-content;
+    min-width: 424px;
   }
 }

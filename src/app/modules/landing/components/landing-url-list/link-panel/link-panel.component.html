@@ -1,4 +1,4 @@
-<div class="flex flexCol gap6" style="min-width: 412px">
+<div class="flex flexCol gap6 formDialog">
   <div class="flex gap3 itemsCenter">
     <span class="mutedText">Demo links</span>
     <i class="material-symbols-rounded mutedText">chevron_right</i>
@@ -8,12 +8,16 @@
   </div>
   <br />
   <div class="flex flexCol gap3 wFull">
+    <span>Short link</span>
+    <input class="card" type="text" [value]="data.shortLink" />
+  </div>
+  <div class="flex flexCol gap3 wFull">
     <span>Destination URL</span>
     <input class="card" type="text" [value]="data.originalUrl" />
   </div>
   <div class="flex flexCol gap3 wFull">
     <span>Short Code</span>
-    <input class="card" type="text" value="BV469Mc" />
+    <input class="card" type="text" [value]="data.shortCode" />
   </div>
   <div class="flex flexCol gap3 wFull">
     <span>QR Code</span>

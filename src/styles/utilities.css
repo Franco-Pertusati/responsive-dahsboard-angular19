@@ -399,3 +399,7 @@
 .focusNone:focus {
   outline: none;
 }
+
+.formDialog {
+  width: 100%;
+}

@@ -4,7 +4,7 @@
 @import url(styles/animations.css);
 
 :root {
-  --bg-dark: hsl(0, 0%, 5%);
+  --bg-dark: hwb(0 5% 95%);
   --bg: hsl(0, 0%, 10%);
   --bg-light: hsl(0, 0%, 15%);
 
@@ -92,15 +92,3 @@ label {
 }
 
 html, body { height: 100%; }
-
-.demoBorderRadius {
-  border: dashed;
-  border-width: 2px 4px;
-  border-radius: 40px;
-  overflow: hidden;
-}
-
-.qrcodeImage {
-  display: flex;
-  flex: 1;
-}
